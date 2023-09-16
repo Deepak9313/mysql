@@ -56,3 +56,24 @@ WHERE animals NOT BETWEEN "cat" AND "lion"-- this give the data in the range c t
 SELECT * FROM Orders
 WHERE 'date' BETWEEN '2023-08-18' AND '2024-01-15';
 -- above query gives the data in the range between one data to another
+
+-- EXISTS Operator
+-- EXISTS operator check the existence of the records and returns the TRUE if it exists
+--Syntax
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+--example
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20); -- this is a sub query means query inside a query
+-- ANY operator
+-- return true if a subquery value meet
+--syntax
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
