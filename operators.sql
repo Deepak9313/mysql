@@ -29,3 +29,30 @@ WHERE column_name IS NULL;
 SELECT column_names
 FROM table_name
 WHERE column_name IS NOT NULL;
+-- IN OPERATOR
+-- Suppose we need to find multiple values in a column so we can use IN operator
+--syntax for IN operator
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+--example
+SELECT * FROM 'test' WHERE 'state' IN ('delhi',"up","assam") -- get all the data where these three values match
+--we can use alternative of IN using NOT IN operator
+--BETWEEN operator
+-- This operator selects values within a given range The values can be numbers, text, or dates.
+--Syntax for Betweeen operator
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+--example
+SELECT * FROM 'test' WHERE 'price' BETWEEN 200 AND 1000;-- this acts like a filter in ecommerce
+--Syntax for NOT BETWEEN operator
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+-- Suppose we are dealing with text values -- so we use between like below
+SELECT * FROM Products
+WHERE animals NOT BETWEEN "cat" AND "lion"-- this give the data in the range c to l because we are dealing with text here
+-- Suppose we need to find the between some particular dates so there it is the way
+SELECT * FROM Orders
+WHERE 'date' BETWEEN '2023-08-18' AND '2024-01-15';
+-- above query gives the data in the range between one data to another
